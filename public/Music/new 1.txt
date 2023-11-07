@@ -1,0 +1,69 @@
+una sa lahat click the "exit"
+     - Unload Me
+second clik the Form and then click the Activate
+     
+	 With Me.cmbGender
+	 .Clear
+	 .AddItem ""
+	 .AddItem "Male"
+	 .AddItem "Female"
+    End With
+	
+click the Clear
+  Me.txtSurename.Value = ""
+  Me.txtFirstname.Value = ""
+  Me.txtAge.Value = ""
+  Me.cmbGender.Value = ""
+  Me.txtAddress.Value = ""
+  
+  click the Submit
+  '''''' this code is for validation''''''
+      If Me.txtSurename.Value = "" Then
+	      MsgBox "Surename can't be filled blank", vbCritical
+		 Exit Sub
+		End If
+  
+      If Me.txtFirstname.Value = "" Then
+	      MsgBox "Please Enter the Firstname", vbCritical
+		 Exit Sub
+		End 
+		
+	  If Me.txtAge.Value = "" Then
+	      MsgBox "Please input the Age", vbCritical
+		 Exit Sub
+		End If
+		
+	   If Me.cmbGender.Value = "" Then
+	      MsgBox "Select the Gender", vbCritical
+		 Exit Sub
+		End If
+		
+	   If Me.txtAddress.Value = "" Then
+	      MsgBox "Please enter the correct Address", vbCritical
+		 Exit Sub
+		End If
+''''''' this code is to save the data into the sheets''''''
+Dim sh As Worksheet
+Set sh = ThisWorkbook.Sheets("data")
+Dim n As Long
+
+n = sh.Range("A" & Application.Rows.Count).end(xlUp).row
+
+sh.Unprotect "123456"
+sh.Range("A" & n + 1).Value = txtSurename.
+sh.Range("B" & n + 1).Value = txtFirstname.Value
+sh.Range("C" & n + 1).Value = txtAge.Value
+sh.Range("D" & n + 1).Value = cmbGender.Value
+sh.Range("E" & n + 1).Value = txtAddress.
+
+sh.Protect "123456" 
+
+Me.txtSurename.Value = ""
+  Me.txtFirstname.Value = ""
+  Me.txtAge.Value = ""
+  Me.cmbGender.Value = ""
+  Me.txtAddress.Value = ""
+  
+  msgbox "New Student Added into the Database"
+  
+  
